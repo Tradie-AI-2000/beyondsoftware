@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Strategy AI & Shield Gates NZ: A Partnership for Growth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Subtle Blues -->
+    <!-- Application Structure Plan: A single-page, top-down narrative journey for Hannah Ward. It starts with acknowledging her success, then introduces the core benefits of Beyond software (Meetings, Actions, Strategy) through an interactive card-based section. This problem/solution structure is more engaging and digestible than a report. It concludes with a clear explanation of Beyond's approach and a simple call to action. This flow is designed to build trust and demonstrate value before asking for a commitment, aligning with Beyond's focus on clarity and control. -->
+    <!-- Visualization & Content Choices: 
+        - Run Meetings That Matter -> Goal: Illustrate meeting efficiency -> Viz: Textual explanation of features and benefits. Justification: Focus is on process improvement, not quantitative data.
+        - Track Actions, Not Promises -> Goal: Show improved task completion -> Viz: Bar Chart (Chart.js) comparing current vs. Beyond task completion. Interaction: Hover for details. Justification: Quantifies the benefit of accountability. Includes re-contextualized "Customer A" example.
+        - Drive Your Strategy Forward -> Goal: Demonstrate strategic alignment -> Viz: Textual explanation of features and benefits. Justification: Focus is on strategic clarity and execution. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #1F2937;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3B82F6;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .section-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <span class="text-blue-600">BEYOND</span> Strategy
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#intro" class="nav-link text-gray-600 font-medium">Introduction</a>
+                <a href="#potential" class="nav-link text-gray-600 font-medium">Your Potential</a>
+                <a href="#solution" class="nav-link text-gray-600 font-medium">Our Solution</a>
+                <a href="#next-steps" class="nav-link text-gray-600 font-medium">Next Steps</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Schedule a Chat</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">Hello Hannah,</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6">We've seen the incredible work Shield Gates NZ does. Your commitment to quality, integrity, and New Zealand-made craftsmanship is the foundation of a remarkable business.</p>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">This is a brief exploration of how a strategic partnership with Beyond can help you build on that foundation, enhancing clarity and control to get the results you need, while preserving the core values that make you great.</p>
+            </div>
+        </section>
+
+        <section id="potential" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Unlocking Your Next Level of Growth with Beyond</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Beyond helps you run focused meetings, track progress, and keep your senior leadership team moving forward. No more lost actions or forgotten decisions.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div id="card-meetings" class="card bg-gray-50 rounded-xl p-8 cursor-pointer border border-transparent hover:border-blue-500">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🗓️</span>
+                            <h3 class="text-2xl font-bold text-gray-800">Run Meetings That Matter</h3>
+                        </div>
+                        <p class="text-gray-600">Transform your team discussions into productive sessions with clear outcomes and actionable steps.</p>
+                    </div>
+
+                    <div id="card-actions" class="card bg-gray-50 rounded-xl p-8 cursor-pointer border border-transparent hover:border-blue-500">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">✅</span>
+                            <h3 class="text-2xl font-bold text-gray-800">Track Actions, Not Promises</h3>
+                        </div>
+                        <p class="text-gray-600">Ensure every task, from initial client meeting to final sign-off, is clearly assigned, tracked, and completed.</p>
+                    </div>
+
+                    <div id="card-strategy" class="card bg-gray-50 rounded-xl p-8 cursor-pointer border border-transparent hover:border-blue-500">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🚀</span>
+                            <h3 class="text-2xl font-bold text-gray-800">Drive Your Strategy Forward</h3>
+                        </div>
+                        <p class="text-gray-600">Align your entire team with Shield Gates NZ's strategic vision and ensure every action contributes to your long-term goals.</p>
+                    </div>
+                </div>
+
+                <div id="details-container" class="mt-16 p-8 bg-white rounded-2xl shadow-lg border border-gray-200/50 min-h-[300px] flex items-center justify-center transition-all duration-500" style="display: none;">
+                    <div id="details-content" class="w-full"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solution" class="py-20">
+            <div class="container mx-auto px-6 section-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">How Beyond Empowers Shield Gates NZ</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Beyond was built using lessons from decades of consulting to help customers get the clarity and control they need to get results. It integrates seamlessly with how you already do business.</p>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4">
+                        <h4 class="font-bold text-lg">Your Business Data</h4>
+                        <p class="text-sm text-gray-600">Meeting notes, actions, KPIs</p>
+                    </div>
+                    <div class="text-2xl font-bold text-blue-600 mx-4">&rarr;</div>
+                    <div class="bg-blue-600 text-white p-8 rounded-lg shadow-xl w-full md:w-1/3">
+                        <h4 class="font-bold text-xl">The BEYOND Platform</h4>
+                        <p class="text-sm text-blue-100">Organizes, tracks, and aligns</p>
+                    </div>
+                    <div class="text-2xl font-bold text-blue-600 mx-4">&rarr;</div>
+                    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4">
+                        <h4 class="font-bold text-lg">Clarity & Control</h4>
+                        <p class="text-sm text-gray-600">Measurable progress, strategic execution</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="next-steps" class="py-20 bg-white">
+            <div class="container mx-auto px-6 section-content">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Our Partnership Journey</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">We believe in a collaborative approach to ensure our solution is perfectly tailored to Shield Gates NZ.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">1</div>
+                        <h4 class="text-xl font-bold mb-2">Discovery Session</h4>
+                        <p class="text-gray-600">A deep dive into your operations, goals, and vision. We listen and learn about what makes your business tick.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">2</div>
+                        <h4 class="text-xl font-bold mb-2">Tailored Solution Design</h4>
+                        <p class="text-gray-600">We design a custom strategy and implementation roadmap that aligns with your specific needs and ensures clear results.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">3</div>
+                        <h4 class="text-xl font-bold mb-2">Growth Partnership</h4>
+                        <p class="text-gray-600">We work alongside you, providing ongoing support and insights to ensure you achieve sustained growth and success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="bg-gray-800 text-white py-16">
+            <div class="container mx-auto px-6 text-center section-content">
+                <h2 class="text-3xl font-bold mb-4">Ready for Clarity and Control?</h2>
+                <p class="text-gray-300 mb-8 max-w-xl mx-auto">Let's have a no-obligation chat about how Beyond can help Shield Gates NZ continue to thrive. I look forward to connecting.</p>
+                <a href="mailto:joe.ward@beyondstrategy.ai" class="bg-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-700 transition-colors text-lg">Schedule Our Discovery Session</a>
+                <div class="mt-8 text-gray-400">
+                    <p class="font-bold">Joe Ward</p>
+                    <p>AI Strategy Consultant, Beyond Strategy AI</p>
+                    <p>joe.ward@beyondstrategy.ai</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const cardData = {
+                meetings: {
+                    title: '🗓️ Run Meetings That Matter',
+                    description: 'Transform your team meetings into productive sessions where every discussion leads to clear outcomes and actionable steps.',
+                    problem: 'Ever sat in a meeting that could have been an email? Or seen great ideas get discussed, and then forgotten about? For Shield Gates NZ, this could mean delays in custom gate designs, miscommunications on installation schedules, or strategic discussions that don\'t translate into action.',
+                    solution: 'Beyond helps you create clear agendas in seconds, ensuring your senior leadership team comes prepared. Automatic meeting minutes and action summaries mean no more lost actions or forgotten decisions. Meeting ratings help continuously improve effectiveness, and time-saving structures ensure discussions stay on track.',
+                    benefits: [
+                        'Streamlined decision-making for custom projects.',
+                        'Improved coordination between design, fabrication, and installation teams.',
+                        'Reduced time wasted in unproductive discussions.',
+                        'Clearer communication of strategic goals to the entire team.'
+                    ]
+                },
+                actions: {
+                    title: '✅ Track Actions, Not Promises',
+                    description: 'Ensure every task, from initial client meeting to final sign-off, is clearly assigned, tracked, and completed.',
+                    problem: 'For complex projects like "Customer A\'s" custom driveway gate, managing multiple suppliers, specialized fabrication, and intricate installation steps can lead to tasks falling through the cracks, missed deadlines, and frustrated clients.',
+                    solution: 'Beyond\'s action tracking system turns meeting discussions into measurable progress. It provides clear task ownership and deadlines, allows you to add project details and milestones, and offers visual progress tracking (green for on-track, red for behind). The \'nudge\' feature brings off-track tasks back in line, ensuring nothing falls through the cracks.',
+                    benefits: [
+                        '**For Customer A\'s Project:**',
+                        '**Meeting with Customer A:** Actions like "Confirm custom steel artisan availability," "Obtain quote for smart automation system," and "Schedule initial site survey" are immediately captured with clear owners and deadlines.',
+                        '**Supplier Coordination:** Actions like "Follow up with steel artisan for fabrication timeline" or "Confirm international automation system delivery date" are tracked visually. If a task goes red, a nudge ensures it\'s addressed.',
+                        '**Installation Phase:** Milestones for groundwork, gate installation, and automation setup are clearly defined and monitored, ensuring the right team and equipment are on site when needed.',
+                        '**Final Sign-off:** All outstanding items are visible, ensuring a smooth completion and client satisfaction.',
+                        'Overall, this leads to faster project completion, reduced rework, and enhanced client satisfaction for Shield Gates NZ.'
+                    ],
+                    chartType: 'bar',
+                    chartData: {
+                        labels: ['Tasks Completed On-Time (Current)', 'Tasks Completed On-Time (With Beyond)'],
+                        datasets: [{
+                            label: 'Percentage of Tasks Completed On-Time',
+                            data: [70, 95],
+                            backgroundColor: ['rgba(203, 213, 225, 0.6)', 'rgba(59, 130, 246, 0.6)'],
+                            borderColor: ['rgb(100, 116, 139)', 'rgb(59, 130, 246)'],
+                            borderWidth: 2
+                        }]
+                    },
+                    chartOptions: {
+                        scales: { y: { beginAtZero: true, max: 100 } },
+                        plugins: { legend: { display: false } }
+                    }
+                },
+                strategy: {
+                    title: '🚀 Drive Your Strategy Forward',
+                    description: 'Align your entire team with Shield Gates NZ\'s strategic vision and ensure every action contributes to your long-term goals.',
+                    problem: 'As Shield Gates NZ grows, it can be challenging to ensure daily tasks are clearly linked to the broader company strategy, like expanding into new regions or diversifying product lines. Important strategic initiatives can lose momentum.',
+                    solution: 'Beyond provides one central hub for your team to stay in sync. It helps you build and document your own unique strategy, define and capture actions that drive strategy execution with accountability, and mark every action or KPI as on- or off-track for better visibility. You get real-time visibility on all actions, shared meeting notes and decisions, and instant team updates, ensuring a clear link between daily tasks and strategic goals.',
+                    benefits: [
+                        'Total alignment between daily operations and company vision.',
+                        'Clear definition and tracking of strategic priorities (e.g., "Expand commercial client base by 20%").',
+                        'Consistent progress on key initiatives, like developing new gate automation features.',
+                        'Long-term goals remain visible and actionable in weekly meetings.',
+                        'Ability to measure what matters most for Shield Gates NZ\'s growth.'
+                    ]
+                }
+            };
+            
+            const cards = {
+                meetings: document.getElementById('card-meetings'),
+                actions: document.getElementById('card-actions'),
+                strategy: document.getElementById('card-strategy')
+            };
+
+            const detailsContainer = document.getElementById('details-container');
+            const detailsContent = document.getElementById('details-content');
+            let currentChart = null;
+
+            function showDetails(key) {
+                const data = cardData[key];
+                
+                let chartHtml = '';
+                if(data.chartType && data.chartData) {
+                    chartHtml = `<div class="md:w-1/2"><div class="chart-container"><canvas id="details-chart"></canvas></div></div>`;
+                }
+
+                let benefitsListHtml = data.benefits.map(item => `<li class="mb-1">${item}</li>`).join('');
+
+                detailsContent.innerHTML = `
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="${data.chartType ? 'md:w-1/2' : 'w-full'}">
+                            <h4 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">${data.title}</h4>
+                            <p class="text-gray-600 text-lg mb-4">${data.description}</p>
+                            <p class="text-gray-700 font-semibold mb-2">The Problem for Shield Gates NZ:</p>
+                            <p class="text-gray-600 mb-4">${data.problem}</p>
+                            <p class="text-gray-700 font-semibold mb-2">How Beyond Solves It:</p>
+                            <p class="text-gray-600 mb-4">${data.solution}</p>
+                            <p class="text-gray-700 font-semibold mb-2">Key Benefits for Shield Gates NZ:</p>
+                            <ul class="list-disc list-inside text-gray-600">
+                                ${benefitsListHtml}
+                            </ul>
+                        </div>
+                        ${chartHtml}
+                    </div>
+                `;
+
+                if (currentChart) {
+                    currentChart.destroy();
+                }
+
+                detailsContainer.style.display = 'flex';
+                setTimeout(() => {
+                    detailsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (data.chartType && data.chartData) {
+                        const ctx = document.getElementById('details-chart').getContext('2d');
+                        
+                        const chartConfig = {
+                            type: data.chartType,
+                            data: JSON.parse(JSON.stringify(data.chartData)),
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                ...data.chartOptions
+                            }
+                        };
+                        currentChart = new Chart(ctx, chartConfig);
+                    }
+                }, 100);
+            }
+
+            Object.keys(cards).forEach(key => {
+                cards[key].addEventListener('click', () => showDetails(key));
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-content').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
